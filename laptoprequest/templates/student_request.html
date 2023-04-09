@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% if user.is_authenticated and user.role == 'Student' %}
+<!-- Hero Section -->
+<section class="hero-background">
+  <div class="hero-overlay">
+    <div class="container-md text-white pt-5">
+      <br />
+      <br />
+      <h1>My Requests</h1>
+    </div>
+  </div>
+</section>
+
+<!-- user info section -->
+<div class="container-fluid secondary-background-color">
+  <div class="container pt-4 pb-4">
+    <p>Welcome: {{ user.username }}</p>
+    <p>Enrollment Status: {{ user.role }}</p>
+  </div>
+</div>
+<!-- Load computer objects -->
+<div class="container">
+  <br />
+  <h1>History</h1>
+  <br>
+  {% for request in requests %}
+  {% if request.student_email == user.email %}
+  <!-- Request info start -->
+  <div class="card border-light-subtle mb-4">
+    <div class="card-header"><strong>Request Number: {{ request.id }}</strong></div>
+    <div class="card-body">
+      <!-- Selecting the message color start -->
+      {% if request.order_status == 'Denied' %}
+      <p class="card-title text-danger"><strong>Status: </strong>{{ request.order_status }}</p>
+      {% elif request.order_status == 'Create' or request.order_status == 'Pending' %}
+      <p class="card-title text-warning"><strong>Status: </strong>{{ request.order_status }}</p>
+      {% elif request.order_status == 'Returned' %}
+      <p class="card-title text-primary"><strong>Status: </strong>{{ request.order_status }}</p>
+      {% else %}
+      <p class="card-title text-success"><strong>Status: </strong>{{ request.order_status }}</p>
+      {% endif %}
+      <!-- Selecting the message color end -->
+
+      <p><strong>Request Number:</strong> {{ request.id }}</p>
+      <p class="card-title"><strong>Request Date:</strong> {{ request.order_date }}</p>
+      <p class="card-text"><strong>Student Email:</strong> {{ request.student_email }}</p>
+      <p class="card-text"><strong>Requested by:</strong> {{ request.student_first_name }}
+        {{request.student_last_name}}
+      </p>
+      <p class="card-text"><strong>Teacher Email:</strong> {{ request.teacher_email }}</p>
+      <p class="card-text"><strong>Approved by:</strong> {{ request.teacher_first_name }}
+        {{request.teacher_last_name}}
+      </p>
+      <p><strong>SN:</strong> {{ request.computer_sn }}</p>
+      <p><strong>Operating System:</strong> {{ request.os }}</p>
+      <p><strong>Classification:</strong> {{ request.computer_classification }}</p>
+    </div>
+    <br>
+  </div>
+  {% endif %}
+  <!-- Request info start -->
+  {% endfor %}
+  <br />
+</div>
+{% else%}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Sorry!</strong> You don't have access to view this page.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  <br>
+  <br>
+  <a href="{% url 'home' %}" role="button">Back to Home page.</a>
+</div>
+{% endif %}
+{% endblock %}

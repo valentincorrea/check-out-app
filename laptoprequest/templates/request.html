@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Request Form{% endblock %}
+{% block content %}
+<!-- authentication -->
+{% if user.is_authenticated %}
+<!-- Hero Section -->
+<section class="hero-background">
+    <div class="hero-overlay">
+        <div class="container-md text-white pt-5">
+            <h1>Request Form</h1>
+            <br>
+            <h5>
+                Currently enrolled UNC Charlotte students may borrow PC and Mac<br>
+                laptops on a first come, first served basis.
+            </h5>
+        </div>
+    </div>
+</section>
+
+<!-- user info section -->
+<div class="container-fluid secondary-background-color">
+    <div class="container pt-4 pb-4">
+        <p>Welcome: {{ user.username }}</p>
+        <p>Enroll Status: {{ user.role }}</p>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="container pt-4 pb-4">
+        <h2>Request Form</h2>
+        <br>
+        {% if submitted %}
+        <h5>Your request was submitted successfully!</h5>
+        <h5>View your request <a href="{% url 'student_view' %}">here</a> </h5>
+        {% else %}
+        <form action="" method="POST">
+            <!-- Cross-Site Request Forgery -->
+            {% csrf_token %}
+            <!-- inserting the form -->
+            {{ form.as_p }}
+            <input type="submit" value="submit" class="btn btn-primary">
+        </form>
+        <br><br>
+        {% endif %}
+    </div>
+    {% else %}
+    <br>
+    <div class="container">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Sorry!</strong> You must be logged in to create a request.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Login | Borrow Laptops {% endblock %}
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero-background">
+    <div class="hero-overlay">
+        <div class="container-md text-light pt-5">
+            <br>
+            <br>
+            <h1>Login</h1>
+            <p>Currently enrolled UNC Charlotte students may borrow PC and Mac laptops on a first come, first served basis.</p>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <br><br>
+        <h1>Login Form</h1>
+        <br>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

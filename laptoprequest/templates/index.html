@@ -1,0 +1,68 @@
+{% extends 'base.html' %} {% block content %}
+<!-- Hero Section -->
+<section class="hero-background">
+  <div class="hero-overlay">
+    <div class="container-md text-white pt-5">
+      <h1>Borrow Laptops</h1>
+      <br>
+      <h5>
+        Currently enrolled UNC Charlotte students may borrow PC and Mac<br>
+        laptops on a first come, first served basis.
+      </h5>
+      </p>
+    </div>
+  </div>
+</section>
+<!-- Banner Section -->
+<div class="container-fluid secondary-background-color">
+  <div class="container p-5">
+    <div class="text-center">
+      <h3>Available Computers</h3>
+    </div>
+    <div class="row justify-content-around">
+      <div class="row gy-4 pb-5">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title accent-text text-center">Standard Laptops</h3>
+              <div class="custom-circle text-light">{{ standart_count }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title accent-text text-center">Performance Laptops</h3>
+              <div class="custom-circle text-light">{{ performance_count }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Disclaimer -->
+<div class="container pt-5 pb-5 mb-4">
+  <h2 class="accent-text">Laptop Check Out Policies</h2>
+  <ul>
+    <li>
+      <p>Check the availability before submitting a request</p>
+    </li>
+    <li>
+      <p>Laptops are available for currently enrolled students only</p>
+    </li>
+    <li>
+      <p>Students may borrow one laptop at the time</p>
+    </li>
+    <li>
+      <p>Students are financially reposible for any damages that ocurred while in your
+        possesion</p>
+    </li>
+  </ul>
+  <p class="fst-italic">
+    Note: High-end computers are reserved for research students only.
+  </p>
+  <p class="fw-bold">Login to start your request.</p>
+  <a class="btn btn-secondary" href="{% url 'login' %}" role="button">Login</a>
+</div>
+{% endblock %}

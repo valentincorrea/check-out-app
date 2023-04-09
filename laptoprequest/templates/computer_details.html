@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero-background">
+    <div class="hero-overlay">
+        <div class="container-md text-light pt-5">
+            <br>
+            <br>
+            <h1>Computer Details</h1>
+            <p>Currently enrolled UNC Charlotte students may borrow PC and Mac laptops on a first come,
+                first served basis.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Computer Details Section -->
+<div class="container">
+    <div class="card mt-5 mb-5">
+        <h5 class="card-header">Computer ID: {{ computer_datail.id }}</h5>
+        <div class="card-body">
+            <!-- Serial number -->
+            <p class="fw-bold">Serial Number: <span class="fw-normal">{{ computer_datail.serial_number }}</span></p>
+
+            <!-- OS -->
+            <p class="fw-bold">Operating System: <span class="fw-normal">{{computer_datail.os }}</span></p>
+
+            <!-- Memory -->
+            <p class="fw-bold">RAM: <span class="fw-normal">{{computer_datail.ram}}</span></p>
+
+            <p class="fw-bold">Memory: <span class="fw-normal">{{computer_datail.ssd}}</span></p>
+
+            <!-- Graphic Card -->
+            <p class="fw-bold">Graphic Card: <span class="fw-normal">{{computer_datail.graphic_card}}</span></p>
+
+            <!-- Classification -->
+
+            <p class="fw-bold">Classification: <span class="fw-normal">{{ computer_datail.computer_classification }}
+                </span></p>
+        </div>
+    </div>
+</div>
+<div class="separator">
+</div>
+{% endblock %}

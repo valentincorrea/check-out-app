@@ -1,0 +1,40 @@
+<!-- This page can be remove -->
+{% extends 'base.html' %} {% block content %}
+<!-- Hero Section -->
+<section class="hero-background">
+  <div class="hero-overlay">
+    <div class="container-md text-white pt-5">
+      <h1>Contact</h1>
+      <br>
+      <h5>
+        Test Page.
+
+        <h2>Hello {{ form_name }}</h2>
+      </h5><br><br><br>
+      <p>Photo by <a
+          href="https://unsplash.com/@nordwood?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">NordWood
+          Themes</a> on <a
+          href="https://unsplash.com/wallpapers/desktop/computer?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <form action="{% url 'contact' %}" method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="exampleInputName" class="form-label">Name</label>
+      <input type="text" name="form-name" class="form-control" id="exampleInputName" aria-describedby="name">
+      <label for="exampleInputEmail" class="form-label">Email address</label>
+      <input type="email" name="form-email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp">
+      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+      <textarea type="textarea" class="form-control" name="form-message" id="exampleFormControlTextarea1"
+        rows="3"></textarea>
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+{% endblock %}
