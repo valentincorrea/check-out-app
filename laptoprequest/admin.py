@@ -5,21 +5,6 @@ from . import models
 
 # Register your models here.
 
-# class CustomNewUserAdmin(UserAdmin):
-#     search_fields = ['username', 'first_name', 'last_name', 'email', 'user_id']
-#     list_filter = ['role', 'is_active', 'is_staff']
-#     list_per_page = 20
-#     fieldsets = (
-#         *UserAdmin.fieldsets, 
-#         (
-#             'Additional Info',
-#             {
-#                 'fields': ('role','user_id')
-#             }
-#         )
-#     )
-# admin.site.register(NewUser, CustomNewUserAdmin)
-
 @admin.register(models.NewUser)
 class NewUserAdmin(admin.ModelAdmin):
     list_display = ['user_id','username', 'first_name', 'last_name', 'email']
@@ -36,7 +21,6 @@ class NewUserAdmin(admin.ModelAdmin):
             }
         )
     )
-
 
 # admin.site.register(models.Computer)
 @admin.register(models.Computer)

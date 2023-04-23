@@ -67,12 +67,6 @@ class ApproveForm(ModelForm):
             'approved': forms.CheckboxInput(attrs={'class':'form-check-input', 'placeholder': ''}), 
             'comment': forms.Textarea(attrs={'class':'form-control', 'rows':'3', 'placeholder': ''}), 
         }
-        # fields = "__all__"
-    # fields = (
-    #     'approved', 
-    #     'comment', 
-    #     )
-    
 
     # test form
     class TestForm(forms.Form):

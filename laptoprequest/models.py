@@ -119,8 +119,6 @@ class Request (models.Model):
         (COMPUTER_HIGH_PERFORMANCE, 'Performance'),
     ]
     order_date = models.DateTimeField(auto_now_add=True)
-    # check_out_date = models.DateTimeField(auto_now=True)
-    # check_in_date = models.DateTimeField(auto_now=True)
     order_status = models.CharField(max_length=15, choices=REQUEST_CHOICES, default=REQUEST_CREATED)
     student_first_name = models.CharField(max_length=50, null=True, blank=True)
     student_last_name = models.CharField(max_length=50, null=True, blank=True)

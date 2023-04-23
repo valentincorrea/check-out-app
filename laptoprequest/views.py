@@ -104,25 +104,6 @@ def search_request(request):
             select_filter = Request.objects.filter(order_status=filter_options).filter(student_first_name__icontains=first_name).filter(student_last_name__icontains=last_name)
             # results = select_filter.count()
             return render(request, 'search_request.html', {'select_filter':list(select_filter)})
-     
-
-# TEST DB QUERY
-def test(request):
-    if request.method =='POST':
-        filter_options = request.POST['status']
-        first_name = request.POST['student_f_n']
-        last_name = request.POST['student_l_n']
-        # Filter by first name
-        if filter_options == 'default' and last_name == "":
-            select_filter = Request.objects.filter(student_first_name__icontains=first_name)   
-            return render(request, 'test.html', {'select_filter':list(select_filter)})
-        # Filter by last name
-        if filter_options == 'default' and first_name == "":
-            select_filter = Request.objects.filter(student_last_name__icontains=last_name)   
-            return render(request, 'test.html', {'select_filter':list(select_filter)})
-        else:
-            select_filter = Request.objects.filter(Q(order_status__icontains=filter_options) & Q(student_first_name__icontains=first_name))
-            return render(request, 'test.html', {'select_filter':list(select_filter)})
 
 
 
